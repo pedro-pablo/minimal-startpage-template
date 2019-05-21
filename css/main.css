@@ -1,3 +1,6 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap');
+
 /* Animations */
 @keyframes fade-in {
     from {opacity: 0;}
@@ -163,6 +166,18 @@ main {
     #links-container {
         grid-template-columns: 1fr 1fr 1fr 1fr;
         grid-template-rows: 1fr;
+    }
+
+}
+
+@media only screen and (min-width: 1200px) {
+
+    #top-div {
+        padding: 0 15vw 0 15vw;
+    }
+
+    #links-container {
+        padding: 2vh 15vw 2vh 15vw;
     }
 
 }

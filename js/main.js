@@ -1,13 +1,18 @@
-const GMT = 0;
+const timeOffset = 0;
+const datetimeInterval = 100;
+const tabKeyCode = 9;
+const escapeKeyCode = 27;
+const searchBarElement = document.getElementById('search-bar');
+const clockElement = document.getElementById('clock');
 
-const TAB_KEYCODE = 9;
-const ESCAPE_KEYCODE = 27;
-
+/**
+ * Return a string containing the formatted current date and time.
+ */
 function getDateTime() {
     let dateTime = new Date();
     let day = dateTime.getDate();
     let month = dateTime.getMonth() + 1;
-    let hour = dateTime.getHours() + GMT;
+    let hour = dateTime.getHours() + timeOffset;
     let minutes = dateTime.getMinutes();
     let seconds = dateTime.getSeconds();
     if (hour < 0) {
@@ -20,20 +25,19 @@ function getDateTime() {
 }
 
 window.onload = () => {
-    var searchBar = document.getElementById('search-bar');
-    searchBar.focus();
-    searchBar.value = '';
-
     setInterval(() => {
-        document.getElementById('clock').innerText = getDateTime();
-    }, 50);
-    
-    document.addEventListener("keydown", (event) => {
-        if (event.keyCode == ESCAPE_KEYCODE) {
-            searchBar.blur();
-            searchBar.value = '';
-        } else if (event.keyCode != TAB_KEYCODE) {
-            searchBar.focus();
+        clockElement.innerText = getDateTime();
+    }, datetimeInterval);
+
+    searchBarElement.focus();
+    searchBarElement.value = '';
+
+    document.addEventListener('keydown', (event) => {
+        if (event.keyCode == escapeKeyCode) {
+            searchBarElement.blur();
+            searchBarElement.value = '';
+        } else if (event.keyCode != tabKeyCode) {
+            searchBarElement.focus();
         } 
     });
 }
