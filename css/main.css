@@ -1,5 +1,13 @@
 /* Fonts */
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap');
+@font-face {
+    font-family: Roboto;
+    src: url("../fonts/Roboto-Regular.ttf");
+}
+
+@font-face {
+    font-family: Roboto-Light;
+    src: url("../fonts/Roboto-Light.ttf");
+}
 
 /* Animations */
 @keyframes fade-in {
@@ -16,7 +24,6 @@ html {
     margin: 0;
     padding: 0;
     height: 100%;
-    font-family: 'Roboto', sans-serif;
     font-weight: 300;
 }
 
@@ -34,8 +41,9 @@ body {
 main {
     animation-duration: 1s;
     animation-name: fade-in;
-    width: 100%;
+    font-family: Roboto-Light, sans-serif;
     margin: auto;
+    width: 100%;
 }
 
 /* Classes */
@@ -99,7 +107,7 @@ main {
 
 /* IDs */
 #clock {
-    font-family: 'Roboto', sans-serif;
+    font-family: Roboto, sans-serif;
 }
 
 #top-div {
@@ -108,8 +116,8 @@ main {
     grid-template-rows: 1fr 1fr;
     grid-column-end: 5;
     grid-column-start: 1;
-    text-align: center;
     padding: 0 5vw 0 5vw;
+    text-align: center;
 }
 
 #search-form, #clock-div {
@@ -123,12 +131,12 @@ main {
     border-color: #353535;
     border-style: solid;
     border-width: 1px;
+    box-shadow: 0px 0px 15px 2px #111;
     color: #ddd;
     font-size: 16px;
     height: 25px;
     text-align: center;
     width: 100%;
-    box-shadow: 0px 0px 15px 2px #111;
 }
 
 #search-bar:focus {
