@@ -107,7 +107,7 @@ main {
 
 /* IDs */
 #clock {
-    font-family: Roboto, sans-serif;
+    font-family: Roboto;
 }
 
 #top-div {
@@ -116,8 +116,8 @@ main {
     grid-template-rows: 1fr 1fr;
     grid-column-end: 5;
     grid-column-start: 1;
-    padding: 0 5vw 0 5vw;
     text-align: center;
+    padding: 0 5vw 0 5vw;
 }
 
 #search-form, #clock-div {
@@ -126,20 +126,42 @@ main {
     justify-content: center;
 }
 
-#search-bar {
+#search-bar-wrapper {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+}
+
+#search-bar, #search-bar-btn {
     background-color: #353535;
     border-color: #353535;
     border-style: solid;
     border-width: 1px;
+}
+
+#search-bar {
     box-shadow: 0px 0px 15px 2px #111;
+    box-sizing: border-box;
     color: #ddd;
     font-size: 16px;
     height: 25px;
+    padding: 0 25px 0 0;
     text-align: center;
     width: 100%;
 }
 
-#search-bar:focus {
+#search-bar-btn {
+    display: none;
+    font-size: 16px;
+    height: 25px;
+    padding: 0 0 0 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 25px;
+}
+
+#search-bar:focus, #search-bar:focus + #search-bar-btn {
     border-color: #888;
 }
 

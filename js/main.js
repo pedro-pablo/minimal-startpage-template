@@ -1,6 +1,10 @@
-const timeOffset = 0;
-const datetimeInterval = 100;
+/**
+ * Interval which the clock will be updated (in milliseconds).
+ */
+const clockInterval = 100;
+
 const tabKeyCode = 9;
+const enterKeyCode = 13;
 const escapeKeyCode = 27;
 const searchBarElement = document.getElementById('search-bar');
 const clockElement = document.getElementById('clock');
@@ -12,7 +16,7 @@ function getDateTime() {
     let dateTime = new Date();
     let day = dateTime.getDate();
     let month = dateTime.getMonth() + 1;
-    let hour = dateTime.getHours() + timeOffset;
+    let hour = dateTime.getHours();
     let minutes = dateTime.getMinutes();
     let seconds = dateTime.getSeconds();
     if (hour < 0) {
@@ -24,10 +28,16 @@ function getDateTime() {
     return date + '\n' + time;
 }
 
+function setClock() {
+    clockElement.innerText = getDateTime();
+}
+
 window.onload = () => {
+    setClock();
+
     setInterval(() => {
-        clockElement.innerText = getDateTime();
-    }, datetimeInterval);
+        setClock();
+    }, clockInterval);
 
     searchBarElement.focus();
     searchBarElement.value = '';
@@ -36,8 +46,8 @@ window.onload = () => {
         if (event.keyCode == escapeKeyCode) {
             searchBarElement.blur();
             searchBarElement.value = '';
-        } else if (event.keyCode != tabKeyCode) {
+        } else if (event.keyCode != tabKeyCode && event.keyCode != enterKeyCode) {
             searchBarElement.focus();
-        } 
+        }
     });
 }

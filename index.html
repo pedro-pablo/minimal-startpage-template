@@ -16,7 +16,10 @@
             </div>
 
             <form id="search-form" action="https://duckduckgo.com" method="POST">
-                <input id="search-bar" name="q" type="text" title="Search" />
+                <div id="search-bar-wrapper">
+                    <input id="search-bar" name="q" type="text" title="Search" />
+                    <button id="search-bar-btn" type="submit">&#128270;</button>
+                </div>
             </form>
         </div>
         <div id="links-container">
@@ -67,6 +70,17 @@
         </div>
     </main>
 
+    <noscript>
+        <style>
+            #clock {
+                display: none;
+            }
+
+            #search-bar-btn {
+                display: inline-block;
+            }
+        </style>
+    </noscript>
     <script src="js/main.js"></script>
 </body>
 
