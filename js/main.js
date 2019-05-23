@@ -13,15 +13,17 @@ const clockElement = document.getElementById('clock');
  * Return a string containing the formatted current date and time.
  */
 function getDateTime() {
-    let dateTime = new Date();
+    const dateTime = new Date();
     let day = dateTime.getDate();
     let month = dateTime.getMonth() + 1;
     let hour = dateTime.getHours();
     let minutes = dateTime.getMinutes();
     let seconds = dateTime.getSeconds();
+    
     if (hour < 0) {
         hour = 24 + hour;
     }
+
     let date = (day < 10 ? '0' + day : day) + '/' + (month < 10 ? '0' + month : month) + '/' + dateTime.getFullYear();
     let time = (hour < 10 ? '0' + hour : hour) + ':' + (minutes < 10 ? '0' + minutes : minutes) + ':' + (seconds < 10 ? '0' + seconds : seconds);
 
@@ -32,22 +34,21 @@ function setClock() {
     clockElement.innerText = getDateTime();
 }
 
-window.onload = () => {
+
+setClock();
+
+setInterval(() => {
     setClock();
+}, clockInterval);
 
-    setInterval(() => {
-        setClock();
-    }, clockInterval);
+searchBarElement.focus();
+searchBarElement.value = '';
 
-    searchBarElement.focus();
-    searchBarElement.value = '';
-
-    document.addEventListener('keydown', (event) => {
-        if (event.keyCode == escapeKeyCode) {
-            searchBarElement.blur();
-            searchBarElement.value = '';
-        } else if (event.keyCode != tabKeyCode && event.keyCode != enterKeyCode) {
-            searchBarElement.focus();
-        }
-    });
-}
+document.addEventListener('keydown', (event) => {
+    if (event.keyCode == escapeKeyCode) {
+        searchBarElement.blur();
+        searchBarElement.value = '';
+    } else if (event.keyCode != tabKeyCode && event.keyCode != enterKeyCode) {
+        searchBarElement.focus();
+    }
+});
